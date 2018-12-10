@@ -12,6 +12,8 @@ ENV LD_PRELOAD=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so
 # Install JEP
 # Install Pandas
 RUN apt-get update \
+	&& apt-get remove -y python3 \
+	&& apt-get remove -y python3-minimal \
 	&& apt-get install -y python \
 	&& apt-get install -y python-pip \
 	&& pip install jep==3.7.1 \
