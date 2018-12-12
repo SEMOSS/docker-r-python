@@ -1,4 +1,4 @@
-FROM tbanach/docker-r-packages
+FROM semoss/docker-r-packages
 
 LABEL maintainer="semoss@semoss.org"
 
