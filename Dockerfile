@@ -11,13 +11,14 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python2.7/dist-packages/jep
 # Install JEP
 # Install Pandas
 RUN apt-get update \
-	&& apt-get remove -y python3 \
-	&& apt-get remove -y python3-minimal \
-	&& apt-get install -y python \
-	&& apt-get install -y python-pip \
+	&& apt-get install -y python3-pip \
 	&& apt-get -y autoremove \
-	&& pip install jep==3.7.1 \
-	&& pip install pandas
+	&& pip3 install jep==3.7.1 \
+	&& pip3 install numpy \
+	&& pip3 install pandas \
+	&& pip3 install matplotlib \
+	&& pip3 install sklearn \
+	&& pip3 install seaborn
 
 WORKDIR /opt
 
