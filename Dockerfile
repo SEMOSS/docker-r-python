@@ -19,7 +19,10 @@ RUN apt-get update \
 	&& pip3 install matplotlib \
 	&& pip3 install sklearn \
 	&& pip3 install seaborn \
-	&& pip3 install deepdiff
+	&& pip3 install deepdiff \
+	&& pip3 install annoy \
+	&& pip3 install fuzzywuzzy \
+	&& pip3 install python-Levenshtein
 
 WORKDIR /opt
 
