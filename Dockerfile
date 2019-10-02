@@ -1,4 +1,4 @@
-FROM semoss/docker-r-packages
+FROM semoss/docker-r-packages:T9.0.26
 
 LABEL maintainer="semoss@semoss.org"
 
