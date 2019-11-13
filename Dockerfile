@@ -22,7 +22,8 @@ RUN apt-get update \
 	&& pip3 install deepdiff \
 	&& pip3 install annoy \
 	&& pip3 install fuzzywuzzy \
-	&& pip3 install python-Levenshtein
+	&& pip3 install python-Levenshtein \ 
+	&& pip3 install pyjarowinkler
 
 WORKDIR /opt
 
