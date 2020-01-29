@@ -15,7 +15,7 @@ RUN apt-get update \
 	&& apt-get -y autoremove \
 	&& pip3 install jep==3.7.1 \
 	&& pip3 install numpy \
-	&& pip3 install pandas \
+	&& pip3 install pandas==0.24.2 \
 	&& pip3 install matplotlib \
 	&& pip3 install sklearn \
 	&& pip3 install seaborn \
