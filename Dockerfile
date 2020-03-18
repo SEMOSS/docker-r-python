@@ -23,6 +23,7 @@ RUN apt-get update \
 	&& pip3 install annoy==1.15.2 \
 	&& pip3 install fuzzywuzzy \
 	&& pip3 install python-Levenshtein \
+	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
 	&& pip3 install pyarrow 
 
