@@ -1,6 +1,6 @@
-FROM semoss/docker-r-packages:R3.6.1-debian10.5
+FROM semoss/docker-r-packages:R3.6.1-debian10.5 as base
 
-LABEL maintainer="semoss@semoss.org"
+FROM semoss/docker-r-packages:R3.6.1-debian10.5 as pybuilder
 
 # Needed for JEP
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.7/dist-packages/jep
@@ -25,6 +25,18 @@ RUN apt-get update \
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
 	&& pip3 install pyarrow
+
+FROM base
+LABEL maintainer="semoss@semoss.org"
+
+# Needed for JEP
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.7/dist-packages/jep
+
+RUN apt-get update \
+	&& apt-get install -y python3-pip gcc-8- \
+	&& apt-get -y autoremove
+	
+COPY --from=pybuilder /usr/lib/python3/dist-packages /usr/lib/python3/dist-packages
 
 WORKDIR /opt
 
