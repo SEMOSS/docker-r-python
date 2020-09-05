@@ -36,7 +36,7 @@ RUN apt-get update \
 	&& apt-get install -y python3-pip gcc-8- \
 	&& apt-get -y autoremove
 	
-COPY --from=pybuilder /usr/lib/python3/dist-packages /usr/lib/python3/dist-packages
+COPY --from=pybuilder /usr/local/lib/python3.7/dist-packages /usr/local/lib/python3.7/dist-packages
 
 WORKDIR /opt
 
