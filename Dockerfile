@@ -33,10 +33,12 @@ LABEL maintainer="semoss@semoss.org"
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.7/dist-packages/jep
 
 RUN apt-get update \
-	&& apt-get install -y python3-pip gcc-8- \
+	&& apt-get install -y python3-pip gcc-8- linux-libc-dev- \
 	&& apt-get -y autoremove
 	
 COPY --from=pybuilder /usr/local/lib/python3.7/dist-packages /usr/local/lib/python3.7/dist-packages
+COPY --from=pybuilder /usr/lib/python3.7 /usr/lib/python3.7
+COPY --from=pybuilder /usr/lib/x86_64-linux-gnu/libpython3.7m.so.1 /usr/lib/x86_64-linux-gnu/libpython3.7m.so.1
 
 WORKDIR /opt
 
