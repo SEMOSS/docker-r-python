@@ -1,6 +1,16 @@
-FROM semoss/docker-r-packages:R3.6.1-debian10.5 as base
+ARG BASE_REGISTRY=quay.io
+ARG BASE_IMAGE=semoss/docker-r-packages
+ARG BASE_TAG=R3.6.1-debian10.5
 
-FROM semoss/docker-r-packages:R3.6.1-debian10.5 as pybuilder
+
+ARG BUILDER_BASE_REGISTRY=quay.io
+ARG BUILDER_BASE_IMAGE=semoss/ddocker-r-packages
+ARG BUILDER_BASE_TAG=R3.6.1-debian10.5
+
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as base
+
+FROM ${BUILDER_BASE_REGISTRY}/${BUILDER_BASE_IMAGE}:${BUILDER_BASE_TAG} as pybuilder
+
 
 # Needed for JEP
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.7/dist-packages/jep
