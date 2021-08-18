@@ -1,4 +1,8 @@
-FROM semoss/docker-r-packages:R3.6.1-debian10.5
+ARG BASE_REGISTRY=quay.io
+ARG BASE_IMAGE=semoss/docker-r-packages
+ARG BASE_TAG=R3.6.1-debian10.5
+
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
 
 LABEL maintainer="semoss@semoss.org"
 
