@@ -34,7 +34,7 @@ RUN apt-get update \
 	&& pip3 install python-Levenshtein \ 
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
-	&& pip3 install pyarrow \
+	#&& pip3 install pyarrow \
 	&& pip3 install xlrd
 
 FROM base
