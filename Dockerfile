@@ -4,7 +4,7 @@ ARG BASE_TAG=R3.6.1-debian10.5
 
 
 ARG BUILDER_BASE_REGISTRY=quay.io
-ARG BUILDER_BASE_IMAGE=semoss/ddocker-r-packages
+ARG BUILDER_BASE_IMAGE=semoss/docker-r-packages
 ARG BUILDER_BASE_TAG=R3.6.1-debian10.5
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as base
