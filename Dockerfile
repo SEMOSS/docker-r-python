@@ -35,7 +35,8 @@ RUN apt-get update \
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
 	#&& pip3 install pyarrow \
-	&& pip3 install xlrd
+	&& pip3 install xlrd \
+	&& pip3 install pandasql
 
 FROM base
 LABEL maintainer="semoss@semoss.org"
