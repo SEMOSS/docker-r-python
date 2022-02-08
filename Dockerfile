@@ -1,6 +1,8 @@
+#docker build . -t quay.io/semoss/docker-r-python:R4.1.2-debian11
+
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=R4.1.1-debian11
+ARG BASE_TAG=R4.1.2-debian11
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
 
