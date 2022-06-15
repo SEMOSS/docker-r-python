@@ -34,7 +34,7 @@ RUN apt-get update \
 	&& pip3 install xlrd \
 	&& pip3 install pandasql \
 	&& pip3 install transformers==4.11.3 \
-	&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch==1.5.0 torchvision==0.5.0
+	&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
 
 
 WORKDIR /opt
