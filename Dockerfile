@@ -18,7 +18,7 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.9/dist-packages/jep
 RUN apt-get update \
 	&& apt-get install -y python3-pip \
 	&& apt-get -y autoremove \
-	&& pip3 install jep==3.9.0 \
+	&& pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
 	&& pip3 install pandas \
 	&& pip3 install matplotlib \
