@@ -1,8 +1,8 @@
-#docker build . -t quay.io/semoss/docker-r-python:R4.2.1-debian11
+#docker build . -t quay.io/semoss/docker-r-python:cuda
 
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=R4.2.1-debian11
+ARG BASE_TAG=cuda
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
 
@@ -27,15 +27,14 @@ RUN apt-get update \
 	&& pip3 install deepdiff \
 	&& pip3 install annoy==1.15.2 \
 	&& pip3 install fuzzywuzzy \
-	&& pip3 install python-Levenshtein \ 
+	&& pip3 install python-Levenshtein \
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
 	#&& pip3 install pyarrow \
 	&& pip3 install xlrd \
 	&& pip3 install pandasql \
-	&& pip install transformers[torch] \
-	&& pip install transformers[tf-cpu] \
-	&& pip install transformers[flax]
+	&& pip3 install torch torchvision \
+	&& pip install transformers
 	#&& pip3 install transformers==4.11.3 \
 	#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
 
