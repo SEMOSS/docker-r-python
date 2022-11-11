@@ -10,14 +10,15 @@ LABEL maintainer="semoss@semoss.org"
 
 # Needed for JEP
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.9/dist-packages/jep
-ENV arch=$(uname -m)
+
 
 # Install Python
 # Install PIP
 # Install JEP
 # Install Pandas
 
-RUN if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
+RUN arch=$(uname -m)\
+	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
 RUN apt-get update \
 	&& apt-get install -y python3-pip \
 	&& apt-get -y autoremove \
