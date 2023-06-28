@@ -36,7 +36,8 @@ RUN apt-get update \
 	&& pip3 install swifter \
 	#&& pip3 install pyarrow \
 	&& pip3 install xlrd \
-	&& pip3 install pandasql
+	&& pip3 install pandasql \
+ 	&& pip3 install faiss-cpu
 	#&& pip3 install openai
 	#&& pip install transformers[torch]
 	#&& pip3 install transformers==4.11.3 \
