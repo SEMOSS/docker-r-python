@@ -42,6 +42,7 @@ RUN apt-get update \
 	&& pip3 install torch torchvision \
 	&& pip3 install transformers \
 	&& pip3 install openpyxl farm-haystack farm-haystack[faiss] nltk flask gunicorn pytest bs4
+ 	&& pip3 install datasets text_generation
 	#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
 	
 
