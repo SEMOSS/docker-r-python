@@ -1,8 +1,8 @@
-#docker build . -t quay.io/semoss/docker-r-python:R4.2.1-debian11
+#docker build . -t quay.io/semoss/docker-r-python:ubi8
 
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=R4.2.1-debian11
+ARG BASE_TAG=ubi8
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
 
@@ -19,9 +19,7 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.9/dist-packages/jep
 
 RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
-RUN apt-get update \
-	&& apt-get install -y python3-pip \
-	&& apt-get -y autoremove \
+RUN yum install -y python39 python39-devel \
 	&& pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
 	&& pip3 install pandas \
