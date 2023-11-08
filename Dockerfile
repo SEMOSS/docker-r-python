@@ -45,7 +45,8 @@ RUN apt-get update \
  	&& pip3 install datasets text-generation sentence_transformers \
   	&& pip3 install protobuf accelerate \
      	&& pip3 install boto3 google-cloud-aiplatform \
-      	&& pip3 install jsonpickle
+      	&& pip3 install jsonpickle \
+        && pip3 install peft loralib bitsandbytes
 	#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
 	
 
