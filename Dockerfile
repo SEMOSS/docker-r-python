@@ -39,16 +39,18 @@ RUN apt-get update \
 	&& pip3 install xlrd \
 	&& pip3 install pandasql \
 	&& pip3 install openai \
-	&& pip3 install torch torchvision \
+	&& pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 \
 	&& pip3 install transformers \
-	&& pip3 install openpyxl farm-haystack farm-haystack[faiss] nltk flask gunicorn pytest bs4 \
+	&& pip3 install openpyxl farm-haystack farm-haystack[faiss-gpu] nltk flask gunicorn pytest bs4 \
  	&& pip3 install datasets text-generation sentence_transformers \
   	&& pip3 install protobuf accelerate \
      	&& pip3 install boto3 google-cloud-aiplatform \
       	&& pip3 install jsonpickle \
-        && pip3 install peft loralib bitsandbytes
-	#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
-	
+        && pip3 install peft loralib bitsandbytes \
+	&& apt-get purge -y --auto-remove \
+	    && rm -rf /var/lib/apt/lists/* \
+	    && rm -rf /root/.cache
+		
 
 WORKDIR /opt
 
