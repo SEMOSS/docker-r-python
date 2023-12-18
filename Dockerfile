@@ -47,6 +47,7 @@ RUN apt-get update \
      	&& pip3 install boto3 google-cloud-aiplatform \
       	&& pip3 install jsonpickle \
         && pip3 install peft loralib bitsandbytes \
+	&& pip3 install langchain \
 	&& apt-get purge -y --auto-remove \
 	    && rm -rf /var/lib/apt/lists/* \
 	    && rm -rf /root/.cache
