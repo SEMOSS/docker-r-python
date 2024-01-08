@@ -22,6 +22,7 @@ RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
 RUN apt-get update \
 	&& apt-get install -y python3-pip \
+ 	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
 	&& pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
@@ -48,6 +49,7 @@ RUN apt-get update \
       	&& pip3 install jsonpickle \
         && pip3 install peft loralib bitsandbytes \
 	&& pip3 install langchain \
+ 	&& pip3 install paddlepaddle-gpu paddlepaddle==2.5.0 paddleocr==2.7.0.3 pytesseract==0.3.10 timm==0.9.12 \
 	&& apt-get purge -y --auto-remove \
 	    && rm -rf /var/lib/apt/lists/* \
 	    && rm -rf /root/.cache
