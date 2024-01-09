@@ -43,7 +43,7 @@ RUN apt-get update \
 	&& pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 \
 	&& pip3 install transformers \
 	&& pip3 install openpyxl farm-haystack faiss-cpu==1.7.4 nltk flask gunicorn pytest bs4 \
- 	&& pip3 install datasets text-generation sentence_transformers \
+ 	&& pip3 install datasets==2.14.3 text-generation sentence_transformers \
   	&& pip3 install protobuf accelerate \
      	&& pip3 install boto3 google-cloud-aiplatform \
       	&& pip3 install jsonpickle \
