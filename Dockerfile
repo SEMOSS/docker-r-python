@@ -45,12 +45,12 @@ RUN apt-get update \
 	&& pip3 install openpyxl farm-haystack faiss-cpu==1.7.4 nltk flask gunicorn pytest bs4 \
  	&& pip3 install datasets==2.14.3 text-generation sentence_transformers \
   	&& pip3 install protobuf accelerate \
-     	&& pip3 install boto3 google-cloud-aiplatform \
+     	&& pip3 install boto3 google-cloud-aiplatform==1.39.0 \
       	&& pip3 install jsonpickle \
         && pip3 install peft loralib bitsandbytes \
 	&& pip3 install langchain \
  	&& pip3 install paddlepaddle-gpu paddlepaddle==2.5.0 paddleocr==2.7.0.3 pytesseract==0.3.10 timm==0.9.12 \
- 	&& pip3 install keybert enchant \
+ 	&& pip3 install keybert enchant keyphrase-vectorizers  \
 	&& apt-get purge -y --auto-remove \
 	    && rm -rf /var/lib/apt/lists/* \
 	    && rm -rf /root/.cache
