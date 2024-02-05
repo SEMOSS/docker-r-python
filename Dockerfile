@@ -1,7 +1,7 @@
 #docker build . -t quay.io/semoss/docker-r-python:R4.2.1-debian11
 
-ARG BASE_REGISTRY=docker.cfg.deloitte.com
-ARG BASE_IMAGE=ashok/docker-r-packages
+ARG BASE_REGISTRY=quay.io
+ARG BASE_IMAGE=semoss/docker-r-packages
 ARG BASE_TAG=cuda12
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
