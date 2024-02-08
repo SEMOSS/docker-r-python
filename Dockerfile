@@ -24,6 +24,7 @@ RUN apt-get update \
 	&& apt-get -y autoremove \
 	# && pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
+	&& pip3 install jsonpickle \
 	&& pip3 install pandas \
 	&& pip3 install matplotlib \
 	&& pip3 install scikit-learn \
