@@ -1,0 +1,6 @@
+accelerate
+paddlepaddle
+paddlepaddle-gpu
+paddleocr
+pytesseract
+timm
