@@ -1,4 +1,4 @@
-#docker build . -t quay.io/semoss/docker-r-python:ubi8
+#docker build . -t quay.io/semoss/docker-r-python:ubi8-rhel
 
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
@@ -20,7 +20,6 @@ LABEL maintainer="semoss@semoss.org"
 RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
 RUN yum install -y python39 python39-devel \
-	# && pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
 	&& pip3 install jsonpickle \
 	&& pip3 install pandas \
@@ -36,6 +35,7 @@ RUN yum install -y python39 python39-devel \
 	#&& pip3 install pyarrow \
 	&& pip3 install xlrd \
 	&& pip3 install pandasql
+
 #&& pip3 install openai
 #&& pip install transformers[torch]
 #&& pip3 install transformers==4.11.3 \
