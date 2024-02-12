@@ -1,6 +1,6 @@
 accelerate
-paddlepaddle
+paddlepaddle==2.5.0
 paddlepaddle-gpu
-paddleocr
-pytesseract
-timm
+paddleocr==2.7.0.3
+pytesseract==0.3.10
+timm==0.9.12
