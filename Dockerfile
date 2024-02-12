@@ -2,15 +2,11 @@
 
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=ubi8-r
+ARG BASE_TAG=ubi8-rhel
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
 
 LABEL maintainer="semoss@semoss.org"
-
-# Needed for JEP
-# ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.9/dist-packages/jep
-
 
 # Install Python
 # Install PIP
