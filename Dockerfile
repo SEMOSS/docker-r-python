@@ -17,7 +17,9 @@ RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
 RUN apt-get update \
 	&& apt-get install -y python3-pip \
+ 	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
+	&& pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
 	&& pip3 install pandas \
 	&& pip3 install matplotlib \
@@ -29,14 +31,25 @@ RUN apt-get update \
 	&& pip3 install python-Levenshtein \ 
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
+	#&& pip3 install pyarrow \
 	&& pip3 install xlrd \
-	&& pip3 install pandasql
-#&& pip3 install openai
-#&& pip install transformers[torch]
-#&& pip3 install transformers==4.11.3 \
-#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
-
-
+	&& pip3 install pandasql \
+	&& pip3 install openai \
+	&& pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 \
+	&& pip3 install transformers \
+	&& pip3 install openpyxl farm-haystack faiss-cpu==1.7.4 nltk flask gunicorn pytest bs4 \
+ 	&& pip3 install datasets==2.14.3 text-generation sentence_transformers \
+  	&& pip3 install protobuf accelerate \
+     	&& pip3 install boto3 google-cloud-aiplatform==1.39.0 \
+      	&& pip3 install jsonpickle \
+        && pip3 install peft loralib bitsandbytes \
+	&& pip3 install langchain \
+ 	&& pip3 install paddlepaddle-gpu paddlepaddle==2.5.0 paddleocr==2.7.0.3 pytesseract==0.3.10 timm==0.9.12 \
+ 	&& pip3 install keybert enchant keyphrase-vectorizers  \
+  	&& pip3 install lm-format-enforcer \
+	&& apt-get purge -y --auto-remove \
+	    && rm -rf /var/lib/apt/lists/* \
+	    && rm -rf /root/.cache
 WORKDIR /opt
 
 CMD ["bash"]
