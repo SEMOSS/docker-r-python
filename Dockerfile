@@ -19,7 +19,6 @@ RUN apt-get update \
 	&& apt-get install -y python3-pip \
  	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
-	&& pip3 install jep==3.9.1 \
 	&& pip3 install numpy \
 	&& pip3 install pandas \
 	&& pip3 install matplotlib \
