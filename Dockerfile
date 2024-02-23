@@ -19,9 +19,9 @@ RUN apt-get update \
 	&& apt-get install -y python3-pip \
 	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
-	&& /usr/bin/python3 -m  pip3 install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12-R4.2.1/cfgai_requirements.txt \
-	&& /usr/bin/python3 -m  pip3 install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12-R4.2.1/gpu_requirements.txt \
-	&& /usr/bin/python3 -m  pip3 install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/R4.2.1-debian11/semoss_requirements.txt \
+	&& /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12-R4.2.1/cfgai_requirements.txt \
+	&& /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12-R4.2.1/gpu_requirements.txt \
+	&& /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/R4.2.1-debian11/semoss_requirements.txt \
 	&& apt-get purge -y --auto-remove \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /root/.cache
