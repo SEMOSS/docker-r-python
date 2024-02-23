@@ -1,9 +1,6 @@
-torch==2.0.1
-torchvision==0.15.2
-torchaudio==2.0.2
+bitsandbytes
 boto3
 bs4
-bitsandbytes
 datasets==2.14.3
 faiss-cpu==1.7.4
 farm-haystack
@@ -15,6 +12,7 @@ huggingface-hub
 keybert
 keyphrase-vectorizers
 langchain
+lm-format-enforcer
 loralib
 nltk
 openai
@@ -28,4 +26,7 @@ requests
 sentence-transformers
 text-generation
 tiktoken
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
 transformers
