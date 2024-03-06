@@ -2,16 +2,11 @@
 
 ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=ubi8-rhel
+ARG BASE_TAG=ubi8-rhel-squashed
 
-FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as builder
 
 LABEL maintainer="semoss@semoss.org"
-
-# Install Python
-# Install PIP
-# Install JEP
-# Install Pandas
 
 RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
@@ -28,16 +23,10 @@ RUN yum install -y python39 python39-devel \
 	&& pip3 install python-Levenshtein \ 
 	&& pip3 install pyjarowinkler \
 	&& pip3 install swifter \
-	#&& pip3 install pyarrow \
 	&& pip3 install xlrd \
 	&& pip3 install pandasql
 
-#&& pip3 install openai
-#&& pip install transformers[torch]
-#&& pip3 install transformers==4.11.3 \
-#&& pip3 install --find-links https://download.pytorch.org/whl/torch_stable.html torch torchvision
-
-
+FROM scratch AS final
+COPY --from=builder / /
 WORKDIR /opt
-
 CMD ["bash"]
