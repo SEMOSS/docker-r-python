@@ -4,14 +4,10 @@ ARG BASE_REGISTRY=quay.io
 ARG BASE_IMAGE=semoss/docker-r-packages
 ARG BASE_TAG=cuda12.2
 
-FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} 
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as builder
 
 LABEL maintainer="semoss@semoss.org"
 
-# Install Python
-# Install PIP
-# Install JEP
-# Install Pandas
 
 RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
@@ -26,6 +22,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /root/.cache
 
+FROM scratch AS final
+COPY --from=builder / /
 WORKDIR /opt
-
 CMD ["bash"]
