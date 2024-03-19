@@ -17,6 +17,7 @@ loralib
 nltk
 openai
 openpyxl
+opensearch-py
 peft
 protobuf
 pydantic
