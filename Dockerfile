@@ -13,7 +13,7 @@ RUN arch=$(uname -m)\
 RUN apt-get update \
 	&& apt-get install -y python3-pip curl \
 	&& apt-get -y autoremove \
-	&& curl -s https://raw.githubusercontent.com/SEMOSS/docker-r-python/R4.2.1-debian11/semoss_requirements.txt | grep -v 'jep==3.9.1' | /usr/bin/python3 -m pip install --upgrade -r /dev/stdin
+	&& curl -s https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/semoss_requirements.txt | grep -v 'jep==3.9.1' | /usr/bin/python3 -m pip install --upgrade -r /dev/stdin
 
 FROM scratch AS final
 
