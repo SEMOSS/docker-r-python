@@ -11,20 +11,7 @@ LABEL maintainer="semoss@semoss.org"
 RUN arch=$(uname -m)\
 	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
 RUN yum install -y python39 python39-devel \
-	&& pip3 install numpy \
-	&& pip3 install jsonpickle \
-	&& pip3 install pandas \
-	&& pip3 install matplotlib \
-	&& pip3 install scikit-learn \
-	&& pip3 install seaborn \
-	&& pip3 install deepdiff \
-	&& pip3 install annoy==1.15.2 \
-	&& pip3 install fuzzywuzzy \
-	&& pip3 install python-Levenshtein \ 
-	&& pip3 install pyjarowinkler \
-	&& pip3 install swifter \
-	&& pip3 install xlrd \
-	&& pip3 install pandasql
+	&& curl -s https://raw.githubusercontent.com/SEMOSS/docker-r-python/R4.2.1-debian11/semoss_requirements.txt | grep -v 'jep==3.9.1' | /usr/bin/python3 -m pip install --upgrade -r /dev/stdin
 
 FROM scratch AS final
 COPY --from=builder / /
