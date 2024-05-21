@@ -12,6 +12,7 @@ huggingface-hub
 keybert
 keyphrase-vectorizers
 langchain
+langchain-community
 lm-format-enforcer
 loralib
 nltk
