@@ -1,8 +1,8 @@
-#docker build . -t quay.io/semoss/docker-r-python:cuda12.2
+#docker build . -t quay.io/semoss/docker-r-python:cuda12.5
 
-ARG BASE_REGISTRY=quay.io
-ARG BASE_IMAGE=semoss/docker-r-packages
-ARG BASE_TAG=cuda12.2
+ARG BASE_REGISTRY=docker.io
+ARG BASE_IMAGE=nvidia/cuda
+ARG BASE_TAG=12.5.0-runtime-ubuntu22.04
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as builder
 
