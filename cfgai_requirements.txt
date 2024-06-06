@@ -1,3 +1,7 @@
+azure-cognitiveservices-speech
+azure-ai-formrecognizer
+azure-common
+azure-search-documents
 bitsandbytes
 boto3
 bs4
@@ -15,6 +19,7 @@ langchain
 langchain-community
 lm-format-enforcer
 loralib
+moviepy
 nltk
 openai
 openpyxl
