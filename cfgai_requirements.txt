@@ -25,6 +25,7 @@ pydantic
 PyMuPDF
 pyenchant
 pytest
+python-docx
 python-pptx-text-replacer
 requests
 sentence-transformers
