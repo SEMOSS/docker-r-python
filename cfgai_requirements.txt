@@ -11,11 +11,13 @@ farm-haystack
 flask
 google-auth
 google-cloud-aiplatform==1.39.0
+guidance
 gunicorn
 huggingface-hub
 keybert
 keyphrase-vectorizers
 langchain
+langchain-aws
 langchain-community
 lm-format-enforcer
 loralib
