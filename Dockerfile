@@ -48,10 +48,10 @@ RUN apt-get update \
      	&& pip3 install boto3 google-cloud-aiplatform==1.39.0 \
       	&& pip3 install jsonpickle \
         && pip3 install peft loralib bitsandbytes \
-	&& pip3 install langchain \
+	&& pip3 install langchain langchain-community langchain-aws\
  	&& pip3 install paddlepaddle-gpu paddlepaddle==2.5.0 paddleocr==2.7.0.3 pytesseract==0.3.10 timm==0.9.12 \
  	&& pip3 install keybert enchant keyphrase-vectorizers  \
-  	&& pip3 install lm-format-enforcer opensearch-py \
+  	&& pip3 install lm-format-enforcer opensearch-py guidance \
 	&& apt-get purge -y --auto-remove \
 	    && rm -rf /var/lib/apt/lists/* \
 	    && rm -rf /root/.cache
