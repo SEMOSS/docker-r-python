@@ -19,6 +19,7 @@ keyphrase-vectorizers
 langchain
 langchain-aws
 langchain-community
+langchain-text-splitters
 lm-format-enforcer
 loralib
 moviepy
