@@ -13,7 +13,7 @@ google-auth
 google-cloud-aiplatform==1.39.0
 guidance
 gunicorn
-huggingface-hub
+huggingface-hub==0.22.2
 keybert
 keyphrase-vectorizers
 langchain
