@@ -1,7 +1,6 @@
 annoy==1.15.2
 deepdiff
 fuzzywuzzy
-jep==3.9.1
 jsonpickle
 numpy==1.24.4
 matplotlib
