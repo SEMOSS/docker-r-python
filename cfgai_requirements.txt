@@ -1,4 +1,3 @@
-azure-cognitiveservices-speech
 azure-ai-formrecognizer
 azure-common
 azure-search-documents
