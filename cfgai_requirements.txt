@@ -31,7 +31,6 @@ protobuf
 pydantic
 pyenchant
 pytest
-python-pptx-text-replacer
 requests
 sentence-transformers
 text-generation
