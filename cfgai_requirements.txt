@@ -29,7 +29,6 @@ opensearch-py
 peft
 protobuf
 pydantic
-PyMuPDF
 pyenchant
 pytest
 python-pptx-text-replacer
