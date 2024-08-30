@@ -27,12 +27,14 @@ moviepy
 nltk
 openai
 openpyxl
-opensearch-py
+pdfplumber
 peft
 protobuf
 pydantic
 pyenchant
 pytest
+python-docx
+python-pptx
 requests
 sentence-transformers
 text-generation
