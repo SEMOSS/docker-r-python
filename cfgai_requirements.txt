@@ -9,7 +9,7 @@ faiss-cpu==1.7.4
 farm-haystack
 flask
 google-auth
-google-cloud-aiplatform==1.39.0
+google-cloud-aiplatform==1.48.0
 guidance
 gunicorn
 huggingface-hub==0.22.2
