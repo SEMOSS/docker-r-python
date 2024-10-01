@@ -23,6 +23,7 @@ langchain-text-splitters
 langgraph
 lm-format-enforcer
 loralib
+markdown
 moviepy
 nltk
 openai
