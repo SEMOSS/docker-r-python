@@ -30,6 +30,7 @@ transformers
 fuzzywuzzy
 jsonpickle
 numpy
+seaborn
 matplotlib
 scikit-learn
 pandas
