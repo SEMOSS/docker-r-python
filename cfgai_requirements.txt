@@ -7,6 +7,7 @@ bs4
 datasets==2.14.3
 faiss-cpu==1.7.4
 farm-haystack
+fitz
 flask
 google-auth
 google-cloud-aiplatform==1.48.0
