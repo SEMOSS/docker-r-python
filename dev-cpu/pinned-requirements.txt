@@ -24,6 +24,7 @@ tiktoken==0.8.0
 fuzzywuzzy==0.18.0
 jsonpickle==3.3.0
 seaborn==0.13.2
+pandas==2.2.3
 pandasql==0.7.3
 pyjarowinkler==1.8
 xlrd==2.0.1
