@@ -15,12 +15,22 @@ RUN apt-get update \
 	&& apt-get install -y python3-pip curl \
 	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
- 	&&  /usr/bin/python3 -m  pip install --upgrade -r  https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/semoss_requirements.txt \
-	&& /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/cfgai_requirements.txt \
-	&& /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/gpu_requirements.txt \
-	&& apt-get purge -y --auto-remove \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /root/.cache
+	&& curl -sSL https://install.python-poetry.org | python3 - \
+	&& export PATH="/root/.local/bin:$PATH" \
+	&& mkdir /opt/py
+
+COPY pyproject.toml poetry.lock poetry.toml /opt/py
+
+RUN cd /opt/py \
+	&& poetry install  \
+	&& poetry install --extras "gpu"
+
+ 	# &&  /usr/bin/python3 -m  pip install --upgrade -r  https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/semoss_requirements.txt \
+	# && /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/cfgai_requirements.txt \
+	# && /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/gpu_requirements.txt \
+	# && apt-get purge -y --auto-remove \
+	# && rm -rf /var/lib/apt/lists/* \
+	# && rm -rf /root/.cache
 
 FROM scratch AS final
 COPY --from=builder / /
