@@ -16,11 +16,11 @@ RUN apt-get update \
 	&& apt-get install -y tesseract-ocr \
 	&& apt-get -y autoremove \
 	&& curl -sSL https://install.python-poetry.org | python3 - \
-	&& export PATH="/root/.local/bin:$PATH" \
 	&& mkdir /opt/py
 
 COPY pyproject.toml poetry.lock poetry.toml /opt/py
 
+ENV PATH="/root/.local/bin:$PATH" 
 RUN cd /opt/py \
 	&& poetry install  \
 	&& poetry install --extras "gpu"
