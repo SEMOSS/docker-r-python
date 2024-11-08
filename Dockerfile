@@ -47,10 +47,12 @@ RUN arch=$(uname -m)\
 RUN apt-get update \
 	&& apt-get install -y python3-pip curl \
 	&& apt-get install -y tesseract-ocr \
-	&& apt-get -y autoremove
+	&& apt-get -y autoremove \
+	&& curl -sSL https://install.python-poetry.org | python3 - 
 
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
-
+COPY --from=builder /opt/py /opt/py
+ENV PATH="/root/.local/bin:$PATH" 
 
 WORKDIR /opt
 CMD ["bash"]
