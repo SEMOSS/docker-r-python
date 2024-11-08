@@ -27,8 +27,8 @@ ENV POETRY_NO_INTERACTION=1 \
     
 ENV PATH="/root/.local/bin:$PATH" 
 RUN cd /opt/py \
-	&& poetry install --without dev \
-	&& poetry install --extras "gpu" --without dev \
+	&& poetry install \
+	&& poetry install --extras "gpu"  \
  	&& rm -rf $POETRY_CACHE_DIR
 
  	# &&  /usr/bin/python3 -m  pip install --upgrade -r  https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/semoss_requirements.txt \
