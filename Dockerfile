@@ -20,10 +20,16 @@ RUN apt-get update \
 
 COPY pyproject.toml poetry.lock poetry.toml /opt/py
 
+ENV POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=0 \
+    POETRY_VIRTUALENVS_CREATE=0 \
+    POETRY_CACHE_DIR=/tmp/poetry_cache
+    
 ENV PATH="/root/.local/bin:$PATH" 
 RUN cd /opt/py \
-	&& poetry install  \
-	&& poetry install --extras "gpu"
+	&& poetry install --without dev \
+	&& poetry install --extras "gpu" --without dev \
+ 	&& rm -rf $POETRY_CACHE_DIR
 
  	# &&  /usr/bin/python3 -m  pip install --upgrade -r  https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/semoss_requirements.txt \
 	# && /usr/bin/python3 -m  pip install --upgrade -r https://raw.githubusercontent.com/SEMOSS/docker-r-python/cuda12/cfgai_requirements.txt \
@@ -32,7 +38,12 @@ RUN cd /opt/py \
 	# && rm -rf /var/lib/apt/lists/* \
 	# && rm -rf /root/.cache
 
-FROM scratch AS final
-COPY --from=builder / /
+
+#FROM scratch AS final
+#COPY --from=builder / /
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as base
+COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
+
+
 WORKDIR /opt
 CMD ["bash"]
