@@ -42,6 +42,13 @@ RUN cd /opt/py \
 #FROM scratch AS final
 #COPY --from=builder / /
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as base
+RUN arch=$(uname -m)\
+	&& if  [[ $arch == arm* ]] || [[ $arch = aarch64 ]]; then apt-get -y install libhdf5-dev ; fi
+RUN apt-get update \
+	&& apt-get install -y python3-pip curl \
+	&& apt-get install -y tesseract-ocr \
+	&& apt-get -y autoremove
+
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 
 
