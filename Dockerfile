@@ -1,4 +1,4 @@
-#docker build . -t quay.io/semoss/docker-r-python:debian11
+#docker build . -t quay.io/semoss/docker-r-python:debian12-ai
 
 ARG BASE_REGISTRY=docker.io
 ARG BASE_IMAGE=debian
