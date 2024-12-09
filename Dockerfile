@@ -27,7 +27,7 @@ ENV POETRY_NO_INTERACTION=1 \
     
 ENV PATH="/root/.local/bin:$PATH" 
 RUN cd /opt/py \
-	&& git clone https://github.com/SEMOSS/docker-r-python.git --branch package-ai --single-branch \
+	&& git clone https://github.com/SEMOSS/docker-r-python.git --branch packages-ai --single-branch \
  	&& cd docker-r-python \
 	&& poetry install \
 	&& poetry install --extras "gpu"  \
