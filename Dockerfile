@@ -18,7 +18,7 @@ RUN apt-get update \
 	&& curl -sSL https://install.python-poetry.org | python3 - \
 	&& mkdir /opt/py
 
-COPY pyproject.toml poetry.lock poetry.toml /opt/py
+# COPY pyproject.toml poetry.lock poetry.toml /opt/py
 
 ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=0 \
@@ -27,6 +27,8 @@ ENV POETRY_NO_INTERACTION=1 \
     
 ENV PATH="/root/.local/bin:$PATH" 
 RUN cd /opt/py \
+	&& git clone https://github.com/SEMOSS/docker-r-python.git --branch package-ai --single-branch \
+ 	&& cd docker-r-python \
 	&& poetry install \
 	&& poetry install --extras "gpu"  \
  	&& rm -rf $POETRY_CACHE_DIR
