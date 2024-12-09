@@ -28,6 +28,7 @@ moviepy
 nltk
 openai
 openpyxl
+ordered-set
 pdfplumber
 peft
 protobuf
