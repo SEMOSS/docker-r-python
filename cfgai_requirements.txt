@@ -36,6 +36,7 @@ pyenchant
 pytest
 python-docx
 python-pptx
+pypdf
 requests
 sentence-transformers
 text-generation
@@ -44,4 +45,5 @@ torch==2.0.1
 torchaudio==2.0.2
 torchvision==0.15.2
 transformers
+unstructured
 youtube-search
