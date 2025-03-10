@@ -34,7 +34,8 @@ peft
 protobuf
 pydantic
 pyenchant
-PyMuPDF
+pypdf
+#PyMuPDF
 pytest
 python-docx
 python-pptx
@@ -47,5 +48,6 @@ torchaudio==2.0.2
 torchvision==0.15.2
 trafilatura
 transformers
+unstructured
 websockets
 youtube-search
