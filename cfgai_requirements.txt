@@ -35,7 +35,7 @@ protobuf
 pydantic
 pyenchant
 pypdf
-#PyMuPDF
+PyMuPDF
 pytest
 python-docx
 python-pptx
