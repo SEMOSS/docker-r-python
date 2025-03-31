@@ -6,14 +6,6 @@ FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} AS builder
 
 LABEL maintainer="semoss@semoss.org"
 
-# Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-
-# Set environment variables for uv
-ENV UV_LINK_MODE=copy \
-    UV_COMPILE_BYTECODE=1 \
-    UV_PYTHON_DOWNLOADS=never \
-    UV_SYSTEM_PYTHON=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -25,22 +17,40 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libreadline-dev \
     libsqlite3-dev \
     libffi-dev \
-    python3-pip \
+    git \
+    # python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install Python 3.12.9
-RUN curl -O https://www.python.org/ftp/python/3.12.9/Python-3.12.9.tgz \
-    && tar -xzf Python-3.12.9.tgz \
-    && cd Python-3.12.9 \
-    && ./configure --enable-optimizations \
-    && make -j$(nproc) \
-    && make altinstall \
-    && cd .. \
-    && rm -rf Python-3.12.9 Python-3.12.9.tgz \
-    && ln -sf /usr/local/bin/python3.12 /usr/local/bin/python3 \
-    && ln -sf /usr/local/bin/python3.12 /usr/local/bin/python \
-    && ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip3 \
-    && ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip
+# Set environment variables for uv
+ENV UV_LINK_MODE=copy \
+UV_COMPILE_BYTECODE=1 \
+UV_NO_CACHE=1
+
+# we will install python inside /usr/lib/python/semossvenv
+# it is done here to carry forward and limit the duplicated chowns in opt
+ENV VIRTUAL_ENV="/usr/lib/python/semossvenv"
+ENV UV_PYTHON_INSTALL_DIR="/usr/lib/python"
+ENV UV_INSTALL_DIR="/usr/lib/uv/"
+ENV PATH=$UV_INSTALL_DIR:$PATH
+ENV PATH=$VIRTUAL_ENV/bin:$PATH
+
+# Install uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+RUN uv python install 3.12 --default --preview
+RUN uv venv --seed $VIRTUAL_ENV
+
+
+RUN cd /tmp && \
+    curl -o pyproject.toml https://raw.githubusercontent.com/SEMOSS/Semoss/refs/heads/dev/py/install_config/pyproject.toml && \
+    uv pip install -r pyproject.toml  --extra gpu
+	
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} AS final
+
+COPY --from=builder /usr/lib/python /usr/lib/python
+
+ENV VIRTUAL_ENV="/usr/lib/python/semossvenv"
+ENV PATH=$VIRTUAL_ENV/bin:$PATH
 
 # Install additional dependencies
 RUN apt-get update \
@@ -48,11 +58,7 @@ RUN apt-get update \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt
-COPY pyproject.toml .
-RUN uv pip install -r pyproject.toml --extra gpu
-
-FROM scratch AS final
-COPY --from=builder / /
+# FROM scratch AS final
+# COPY --from=builder / /
 WORKDIR /opt
 CMD ["bash"]
