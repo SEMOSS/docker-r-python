@@ -21,6 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+# installing rust as some python packages require it for compiling
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 # Set environment variables for uv
 ENV UV_LINK_MODE=copy \
 UV_COMPILE_BYTECODE=1 \
