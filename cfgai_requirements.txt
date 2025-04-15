@@ -40,6 +40,7 @@ pytest
 python-docx
 python-pptx
 requests
+semantic-text-splitter
 sentence-transformers
 text-generation
 tiktoken
