@@ -4,6 +4,7 @@ azure-search-documents
 bitsandbytes
 boto3
 bs4
+chonky==0.1.4
 datasets==2.14.3
 faiss-cpu==1.7.4
 farm-haystack
